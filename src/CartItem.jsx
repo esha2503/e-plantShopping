@@ -64,5 +64,15 @@ const CartItem = ({ onContinueShopping }) => {
 };
 
 export default CartItem;
+import { useDispatch } from 'react-redux';
+import { removeItem, updateQuantity } from './path/to/CartSlice'; // Adjust the path as necessary
+
+const handleRemoveItem = (name) => {
+  dispatch(removeItem(name)); // Dispatch the removeItem action
+};
+
+const handleUpdateQuantity = (name, quantity) => {
+  dispatch(updateQuantity({ name, quantity })); // Dispatch the updateQuantity action
+};
 
 
