@@ -74,5 +74,32 @@ const handleRemoveItem = (name) => {
 const handleUpdateQuantity = (name, quantity) => {
   dispatch(updateQuantity({ name, quantity })); // Dispatch the updateQuantity action
 };
-
-
+const calculateTotalAmount = (cartItems) => {
+    return cartItems.reduce((total, item) => {
+      return total + (item.price * item.quantity);
+    }, 0);
+  };
+  const calculateTotalCost = (item) => {
+    return item.price * item.quantity;
+  };
+  const handleContinueShopping = () => {
+    // Logic to navigate to the product listing page
+    alert('Returning to product listing page...');
+  };
+  const handleIncrement = (item) => {
+    dispatch(updateQuantity({ name: item.name, amount: item.quantity + 1 }));
+  };
+  
+  const handleDecrement = (item) => {
+    if (item.quantity === 1) {
+      dispatch(removeItem(item.name));
+    } else {
+      dispatch(updateQuantity({ name: item.name, amount: item.quantity - 1 }));
+    }
+  };
+  const handleRemove = (item) => {
+    dispatch(removeItem(item.name));
+  };
+  const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
+<span className="cart-quantity">{totalQuantity}</span>
+        
